@@ -1,0 +1,3 @@
+[31-Oct-2021 15:51:42 UTC] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/theedush/public_html/lms/user/includes/dbconnection.php on line 2
+[31-Oct-2021 15:51:42 UTC] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, bool given in /home/theedush/public_html/lms/index.php on line 66
+[31-Oct-2021 15:51:42 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/theedush/public_html/lms/index.php on line 67

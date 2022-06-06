@@ -1,0 +1,4 @@
+[11-Dec-2021 05:58:31 UTC] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/theedush/public_html/student/user/includes/dbconnection.php on line 2
+[11-Dec-2021 05:58:31 UTC] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, bool given in /home/theedush/public_html/student/index.php on line 67
+[11-Dec-2021 05:58:31 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/theedush/public_html/student/index.php on line 68
+[11-Dec-2021 06:02:49 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, bool given in /home/theedush/public_html/student/index.php on line 68
