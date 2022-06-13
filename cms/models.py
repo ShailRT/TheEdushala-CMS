@@ -2,6 +2,7 @@ from codecs import backslashreplace_errors
 from string import digits
 from django.db import models
 
+
 class CourseModel(models.Model):
     name = models.CharField(max_length=200)
     overview = models.TextField(blank=True, null=True)
@@ -14,9 +15,10 @@ class CourseModel(models.Model):
 
     class Meta:
         ordering = ['-date_added']
-    
+
     def __str__(self):
         return self.name
+
 
 class CollegeModel(models.Model):
     name = models.CharField(max_length=200)
