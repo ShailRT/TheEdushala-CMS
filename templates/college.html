@@ -302,7 +302,7 @@
 						<?php
 						include("../include/contact-form.php");
 						?>
-						<!-- /contanct us form -->
+						<!-- /contact us form -->
 						<div class="card">
 							<div class="card-header">
 								<h3 class="card-title">Related Searches</h3>
@@ -310,9 +310,9 @@
 							<div class="card-body product-filter-desc">
 								<div class="product-tags clearfix">
 									<ul class="list-unstyled mb-0">
-										{% comment %} {% for course in college.course %} {% endcomment %}
-											<li><a href="javascript:void(0)">{{college.course.name}}</a></li>
-										{% comment %} {% endfor %} {% endcomment %}
+										{% for col in related_col %}
+											<li><a href="/college/{{col.slug}}">{{col.name}}</a></li>
+										{% endfor %}
 									</ul>
 								</div>
 							</div>
