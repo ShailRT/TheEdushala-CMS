@@ -74,7 +74,7 @@
 						class="horizontal-main header-style1 bg-dark-transparent clearfix p-0 pt-0 border-bottom border-white-transparent">
 						<div class="horizontal-mainwrapper container clearfix">
 							<div class="desktoplogo">
-								<a href="../index.php">
+								<a href="{% url 'home-page'%}">
 									<h2 class="text-center text-white"><strong>The Edushala</strong></h2>
 				
 									<img src="../../assets/images/brand/logo1.png" class="header-brand-img header-white" alt="logo">
@@ -82,7 +82,7 @@
 							</div>
 							<div class="desktoplogo-1">
 				
-								<a href="../index.php">
+								<a href="{% url 'home-page'%}">
 									<h2 class="text-center"><strong>The Edushala</strong></h2>
 									<!-- <img src="../../assets/images/brand/logo.png" alt="img"> -->
 								</a>
@@ -167,7 +167,7 @@
 									
 									<h3 class="card-title mb-3 font-weight-bold">Description</h3>
 									<div class="mb-0 description">
-										{% if course.information|length > 0 %}
+										{% if college.information|length > 0 %}
 											{{college.information|linebreaks}}
 											
 										{% endif %}
@@ -206,21 +206,25 @@
 									{{college.courses|linebreaks}}
 									
 									<table class="table table-bordered">
-										<thead>
-											<tr>
-												<th>Course</th>
-												<th>Fees</th>
-												
-											</tr>
-										</thead>
-										<tbody>
+										
+										
 											{%for key, value in ct.items%}
-											
-												<tr>
-													<td>{{key}}</td>
-													<td>{{value}}</td>
-												</tr>
-												{%endfor%}
+												{% if forloop.counter == 1 %}
+													<thead>
+														<tr>
+															<th>{{key}}</th>
+															<th>{{value}}</th>
+														
+														</tr>
+													</thead>
+													<tbody>
+												{% else %}
+													<tr>
+														<td>{{key}}</td>
+														<td>{{value}}</td>
+													</tr>
+												{% endif %}
+											{%endfor%}
 										</tbody>
 									</table>
 									
@@ -299,9 +303,24 @@
 						
 						
 						<!-- contact us form -->
-						<?php
-						include("../include/contact-form.php");
-						?>
+						<div class="card">
+							<div class="card-header">
+								<h3 class="card-title">Enquiry Form</h3>
+							</div>
+							<div class="card-body product-filter-desc">
+								<div class="product-tags clearfix">
+									<form action="." method="POST">
+										{% csrf_token %}
+										{{ form.as_p }}
+										<div class="align-item-center" style="width:100%;">
+											<button type="submit" class="btn btn-primary ">Submit</button>
+											</div>
+									</form>
+								</div>
+							</div>
+						</div>
+						
+						
 						<!-- /contact us form -->
 						<div class="card">
 							<div class="card-header">
@@ -311,7 +330,7 @@
 								<div class="product-tags clearfix">
 									<ul class="list-unstyled mb-0">
 										{% for col in related_col %}
-											<li><a href="/college/{{col.slug}}">{{col.name}}</a></li>
+											<li><a href="/college/{{col.slug}}">{{col.slug|upper}}</a></li>
 										{% endfor %}
 									</ul>
 								</div>
@@ -339,12 +358,16 @@
 							<div class="col-lg-6">
 								<div class="mt-4">
 									<div class="input-group sub-input mt-1">
-										<input type="text" class="form-control input-lg  br-ts-7  br-bs-7" placeholder="Enter your Name">
-										<input type="text" class="form-control input-lg  border-end border-muted" placeholder="Contact Number">
+										<form action="." method="POST" class="form-inline">
+											{% csrf_token %}
+										{{ form.as_table }}
+										<!-- <input type="text" class="form-control input-lg  br-ts-7  br-bs-7" placeholder="Enter your Name">
+										<input type="text" class="form-control input-lg  border-end border-muted" placeholder="Contact Number"> -->
 										<div class="input-group-text ">
-											<button type="button" class="btn btn-secondary btn-lg br-te-7  br-be-7">
+											<button type="submit" class="btn btn-secondary btn-lg br-te-7  br-be-7 rounded-0">
 												Submit
 											</button>
+										</form>
 										</div>
 									</div>
 								</div>

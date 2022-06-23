@@ -36,7 +36,6 @@ class CollegeModel(models.Model):
     ranking = models.TextField(blank=True, null=True)
     fees = models.TextField(blank=True, null=True)
     eligibility = models.TextField(blank=True, null=True)
-    course = models.ManyToManyField(CourseModel, related_name='course')
     date_added = models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -44,3 +43,8 @@ class CollegeModel(models.Model):
 
     def __str__(self):
         return self.name
+class Navbar(models.Model):
+    college = models.CharField(max_length=120)
+    col_slug = models.CharField(max_length=300)
+
+    
