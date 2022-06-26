@@ -6,8 +6,11 @@ from django.db import models
 class CourseModel(models.Model):
     name = models.CharField(max_length=200)
     overview = models.TextField(blank=True, null=True)
+    admission = models.TextField(blank=True, null=True)
+    eligibilty = models.TextField(blank=True, null=True)
     entrance = models.TextField(blank=True, null=True)
     fees = models.TextField(blank=True, null=True)
+    fees_table = models.TextField(blank=True, null=True)
     colleges = models.TextField(blank=True, null=True)
     salary = models.TextField(blank=True, null=True)
     slug = models.SlugField(max_length=200)
@@ -43,8 +46,15 @@ class CollegeModel(models.Model):
 
     def __str__(self):
         return self.name
+
+
 class Navbar(models.Model):
-    college = models.CharField(max_length=120)
-    col_slug = models.CharField(max_length=300)
+    page_type = models.CharField(max_length=120)
+    col = models.OneToOneField(CollegeModel, on_delete=models.CASCADE, null=True, blank=True)
+    cr = models.OneToOneField(CourseModel, on_delete=models.CASCADE, null=True, blank=True)
+     
+
+    def __str__(self):
+        return self.page_type
 
     
