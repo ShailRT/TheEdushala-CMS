@@ -30,6 +30,8 @@ class CollegeModel(models.Model):
     rating = models.DecimalField(max_digits=2, decimal_places=1)
     photo = models.ImageField(upload_to='uploads/', blank=True, null=True)
     affilation = models.CharField(max_length=200)
+    type = models.CharField(max_length=200, blank=True, null=True)
+    rank = models.CharField(max_length=250, blank=True, null=True)
     information = models.TextField(blank=True, null=True)
     courses = models.TextField(blank=True, null=True)
     courses_table = models.TextField(blank=True, null=True)

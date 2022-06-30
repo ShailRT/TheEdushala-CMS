@@ -30,7 +30,7 @@ def college_page(request, college_slug):
     else:
         form = LeadForm()
 
-    return render(request, 'college.html', {'college': college, 'related_col': related_col, 'ct': ct, 'form': form})
+    return render(request, 'college.html', {'college': college, 'related_col': related_col, 'ct': ct, 'form': form, 'rat_star': college.rating//2})
 
 
 def course_page(request, course_slug):

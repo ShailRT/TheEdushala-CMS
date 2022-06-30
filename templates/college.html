@@ -97,7 +97,6 @@
 												<div class="megamenu-content">
 													<div class="row">
 														{% include 'course-navbar.html' %}
-														
 													</div>
 												</div>
 											</div>
@@ -130,15 +129,17 @@
 											<p class="text-white lead">ADMISSION 2021, RANKING, COURSES, PLACEMENT</p>
 											<div class="d-block d-md-flex align-items-center mb-5">
 											<a href="javascript:void(0)" class="text-white"><i class="fe fe-bookmark text-white-50 me-2"></i>{{college.affilation}}</a>
-												<span class="text-white ms-3"><i class="fe fe-user text-white-50 text-uppercase"></i>Private University</span>
+												<span class="text-white ms-3"><i class="fe fe-user text-white-50 text-uppercase"></i>{{college.type}}</span>
 											
-												<span class="text-white ms-3"><i class="fe fe-bar-chart text-white-50 text-uppercase"></i>Ranked 37 For Arts By Indiatoday 2021</span>
+												<span class="text-white ms-3"><i class="fe fe-bar-chart text-white-50 text-uppercase"></i>{{college.rank}}</span>
 												<span class="ms-4">
-													<i class="fa fa-star text-warning"></i>
-													<i class="fa fa-star text-warning"></i>
-													<i class="fa fa-star text-warning"></i>
-													<i class="fa fa-star text-warning"></i>
-													<i class="fa fa-star text-white"></i>
+													{% for star in '01234'|make_list %}
+														{% if forloop.counter <=  rat_star %}
+															<i class="fa fa-star text-warning"></i>
+														{% else %}
+															<i class="fa fa-star text-white"></i>
+														{% endif %}
+													{%endfor%}
 													<span class="text-white">({{college.rating}}/10)</span>
 												</span>
 											</div>
@@ -416,9 +417,32 @@
 		<!--Footer Section-->
 
 		<!-- Message Modal -->
-		<?php
-		include("../include/modal-message.php");
-		?>
+		<div class="modal fade" id="contact" tabindex="-1" role="dialog"  aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="examplecontactLongTitle">
+                            {{college.name}}
+                        </h5>
+						<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+						  <span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+                    <form method="post" action="../include/send-leads.php">
+                        <div class="modal-body">
+                         {{form.as_table}}
+                                
+                        
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-success">Send</button>
+                        </div>
+                    </form>
+				</div>
+			</div>
+		</div>
+		
 		<!-- /Message Modal -->
 
 		<!--Comment Modal -->

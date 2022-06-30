@@ -4,14 +4,26 @@
                 <li class="d-none d-sm-block"><a
                 href="{% url 'course-page' course_slug=el.cr.slug %}"
                 class="p-0">{{el.cr.name}}</a></li>
+                <li class="d-sm-none"><a
+                href="{% url 'course-page' course_slug=el.cr.slug %}"
+                class="p-0">{{el.cr.name}}</a></li>
+
+               
         {% endfor %}
         
         
 </ul>
-<ul class="col link-list">
+ <ul class="col link-list">
         <li class="title text-uppercase">Colleges</li>
         {% for el in col_nav %}
-	        <li class="d-none d-sm-block"><a href="{% url 'college-page' college_slug=el.col.slug %}" class="p-0">{{el.col.name}}</a></li>
+        <li class="d-none d-sm-block"><a
+                href="{% url 'college-page' college_slug=el.col.slug %}"
+                class="p-0">{{el.col.name}}</a></li>
+                <li class="d-sm-none"><a
+                href="{% url 'college-page' college_slug=el.col.slug %}"
+                class="p-0">{{el.col.slug|upper}}</a></li>
+
 	{%endfor%}
+
 
 </ul>

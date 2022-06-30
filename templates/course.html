@@ -85,7 +85,7 @@
 							<!-- Navbar -->
 							<nav class="horizontalMenu clearfix d-md-flex">
 								<ul class="horizontalMenu-list">
-									<li aria-haspopup="true"><a href="javascript:void(0)">Universities & Colleges <span
+									<li aria-haspopup="true"><a href="javascript:void(0)">Courses & Colleges <span
 												class="fe fe-chevron-down"></span></a>
 										<div class="horizontal-megamenu clearfix">
 											<div class="container">
@@ -170,16 +170,16 @@
 										hbba 
 									</a> -->
 									{% if course.overview|length > 0 %}
-										<p>{{course.overview|linebreaks}}</p>
+										<p id="overview">{{course.overview|linebreaks}}</p>
 									{% endif %}
 
 									{% if course.entrance|length > 0 %}
-										<p id="bba-eligibility-entrance"><strong> Entrance</strong></p>
+										<p id="entrance"><strong> Entrance</strong></p>
 										<p>{{course.entrance}}</p>
 									{% endif %}
 
 									{% if course.eligibility|length > 0 %}
-									<p id="bba-eligibility" class="mt-5">
+									<p id="eligibility" class="mt-5">
 										<strong>Eligibility</strong>
 										<p>{{course.eligibility}}</p>
 										<p>The following are the eligibility requirements for this course:</p>
@@ -192,7 +192,7 @@
 									{% endif %}
 
 									{% if course.fees|length > 0 %}
-										<p id="bba-eligibility-entrance"><strong>Fees</strong></p>
+										<p id="fees"><strong>Fees</strong></p>
 										<p>{{course.fees}}</p>
 										{% if course.fees_table|length > 0 %}
 										<p> <table class="table table-bordered">
@@ -222,17 +222,17 @@
 									{% endif %}
 
 									{% if course.career|length > 0 %}
-									<p id="bba-eligibility-entrance"><strong>Career Prospects</strong></p>
+									<p id="career"><strong>Career Prospects</strong></p>
 									<p>{{course.career}}</p>
 									{% endif %}
 
 									{% if course.colleges|length > 0 %}
-									<p id="bba-eligibility-entrance"><strong>Top Colleges in India for {{course.name}}</strong></p>
+									<p id="top-college"><strong>Top Colleges in India for {{course.name}}</strong></p>
 									<p>{{course.colleges}}</p>
 									{% endif %}
 
 									{% if course.salary|length > 0 %}
-									<p id="bba-eligibility-entrance"><strong>Salary</strong></p>
+									<p id="salary"><strong>Salary</strong></p>
 									<p>{{course.salary}}</p>
 									{% endif %}
 										
@@ -276,18 +276,18 @@
 							<div class="card-body item-user bg-white">
 								<h4 class="mb-4">Table of Content</h4>
 								<div>
-									<h6 class="mb-3"><span class="font-weight-semibold"><i class="fe fe-link me-2 mb-2"></i></span><a href="#what-bba" class="text-body"> {{course.name}} Info</a></h6>
+									<h6 class="mb-3"><span class="font-weight-semibold"><i class="fe fe-link me-2 mb-2"></i></span><a href="#overview" class="text-body"> {{course.name}} Info</a></h6>
 									{% if course.eligibility|length > 0 %}
-										<h6 class="mb-3"><span class="font-weight-semibold"><i class="fe fe-link me-2 mb-2"></i></span><a href="#bba-eligibility-entrance" class="text-body"> Eligibility and Entrance in </a></h6>
+										<h6 class="mb-3"><span class="font-weight-semibold"><i class="fe fe-link me-2 mb-2"></i></span><a href="#eligibility" class="text-body"> Eligibility and Entrance in </a></h6>
 									{% endif%}
 									{% if course.fees|length > 0 %}
-										<h6 class="mb-3"><span class="font-weight-semibold"><i class="fe fe-link me-2 mb-2"></i></i></span><a href="#bba-fees" class="text-body">{{course.name}} Fees</a></h6>
+										<h6 class="mb-3"><span class="font-weight-semibold"><i class="fe fe-link me-2 mb-2"></i></i></span><a href="#fees" class="text-body">{{course.name}} Fees</a></h6>
 									{% endif%}
 									{% if course.colleges|length > 0 %}
-										<h6 class="mb-3"><span class="font-weight-semibold"><i class="fe fe-link me-2 mb-2"></i></span><a href="#college-bba" class="text-body">Top {{course.name}} Colleges</a></h6>
+										<h6 class="mb-3"><span class="font-weight-semibold"><i class="fe fe-link me-2 mb-2"></i></span><a href="#top-college" class="text-body">Top {{course.name}} Colleges</a></h6>
 									{% endif%}
 									{% if course.salary|length > 0 %}
-										<h6 class="mb-3"><span class="font-weight-semibold"><i class="fe fe-link me-2 mb-2"></i></span><a href="#salary-bba" class="text-body">Salary after {{course.name}}</a></h6>
+										<h6 class="mb-3"><span class="font-weight-semibold"><i class="fe fe-link me-2 mb-2"></i></span><a href="#salary" class="text-body">Salary after {{course.name}}</a></h6>
 									{% endif%}
 								</div>
 							</div>
@@ -353,10 +353,31 @@
 		<!--Footer Section-->
 
 		<!-- Message Modal -->
-		<?php 
-		$coursename = "Bachelor of Arts [BA] ";
-		include("../include/modal-message.php");
-		?>
+		<div class="modal fade" id="contact" tabindex="-1" role="dialog"  aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="examplecontactLongTitle">
+                            {{course.name}}
+                        </h5>
+						<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+						  <span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+                    <form method="post" action="../include/send-leads.php">
+                        <div class="modal-body">
+                         {{form.as_table}}
+                                
+                        
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-success">Send</button>
+                        </div>
+                    </form>
+				</div>
+			</div>
+		</div>
 		<!-- /Message Modal -->
 
 		<!--Comment Modal -->
