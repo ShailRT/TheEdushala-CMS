@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-lgj*8%@dr*o437hyc6c83gkyzr$3#@62hzb#j_s+lfk6w#)hev
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -79,11 +79,15 @@ WSGI_APPLICATION = 'edushala.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'admi',
+            'USER': 'shail',
+            'PASSWORD': 'shail8468',
+            'HOST': 'admisium.cttd0bqzkedp.us-west-2.rds.amazonaws.com',
+            'PORT': 3306,
+        }
     }
-}
 
 
 # Password validation
